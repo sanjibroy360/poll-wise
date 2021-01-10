@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <%= react_component('Header')%>
+    <%=react_component('header/Header',current_user: current_user, logged_in: logged_in?)%>
     <div class="container">
       <%if !flash.empty? %>
         <%= flash.each do |message_type, message| %>
