@@ -1,6 +1,21 @@
 import React from "react";
+import axios from "axios";
 
-export default function Header({current_user}) {
+export default function Header({ currentUser }) {
+  async function handleLogout() {
+    let headers = {
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRF-TOKEN": document.querySelector('[name="csrf-token"]').content,
+        withCredentials: true,
+      },
+    };
+    let response = await axios.delete("/logout", headers);
+    if (response.status == 200) {
+      window.location.href = "/";
+    }
+  }
+
   return (
     <header class="bg-primary">
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary py-0">
@@ -31,12 +46,15 @@ export default function Header({current_user}) {
           <div class="actions d-flex justify-content-between align-items-center flex-wrap my-2 my-lg-0">
             <div>
               <a href="/login">
-                <button class="btn btn-link mx-2">{current_user?.name}</button>
+                <button class="btn btn-link mx-2">{currentUser?.name}</button>
               </a>
             </div>
             <div>
               <a href="/logout" class="btn btn-link mx-2">
-                <button class="btn btn-link mx-2"> Log out </button>
+                <button class="btn btn-link mx-2" onClick={handleLogout}>
+                  {" "}
+                  Log out{" "}
+                </button>
               </a>
             </div>
           </div>

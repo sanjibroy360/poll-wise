@@ -9,7 +9,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function Login() {
-  
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
   let [isFormFilled, setIsFormFilled] = useState(false);
@@ -25,7 +24,6 @@ export default function Login() {
     setPassword("");
   }
 
- 
   async function handleSubmit(e) {
     try {
       e.preventDefault();
@@ -44,7 +42,7 @@ export default function Login() {
       if (response) {
         reset_form();
         setLoading(false);
-        window.location.href = '/';
+        window.location.href = "/";
         toast.success(response.data.success);
       }
     } catch (error) {
