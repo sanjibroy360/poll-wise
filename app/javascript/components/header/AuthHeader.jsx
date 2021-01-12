@@ -19,7 +19,7 @@ export default function Header({ currentUser }) {
   return (
     <header class="bg-primary">
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary py-0">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
           <h2> Poll Wise</h2>
         </a>
 
@@ -38,7 +38,7 @@ export default function Header({ currentUser }) {
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="/polls/new">
                 Create Poll <span class="sr-only">(current)</span>
               </a>
             </li>
@@ -52,8 +52,7 @@ export default function Header({ currentUser }) {
             <div>
               <a href="/logout" class="btn btn-link mx-2">
                 <button class="btn btn-link mx-2" onClick={handleLogout}>
-                  {" "}
-                  Log out{" "}
+                  Log out
                 </button>
               </a>
             </div>
