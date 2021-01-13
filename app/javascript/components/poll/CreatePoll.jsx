@@ -38,35 +38,37 @@ export default function CreatePoll() {
   }
 
   async function handleSubmit(e) {
-    e.preventDefault();
-    setLoading(true);
-    let payload = {
-      poll: {
-        title,
-        options_attributes: [
-          { name: optionA },
-          { name: optionB },
-          { name: optionC },
-          { name: optionD },
-        ],
-      },
-    };
-    let headers = {
-      headers: {
-        "Content-Type": "application/json",
-        "X-CSRF-TOKEN": document.querySelector('[name="csrf-token"]').content,
-      },
-    };
-
     try {
+      e.preventDefault();
+      setLoading(true);
+      let payload = {
+        poll: {
+          title,
+          options_attributes: [
+            { name: optionA },
+            { name: optionB },
+            { name: optionC },
+            { name: optionD },
+          ],
+        },
+      };
+      let headers = {
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRF-TOKEN": document.querySelector('[name="csrf-token"]').content,
+        },
+      };
+
       var response = await axios.post("/polls/new", payload, headers);
       if (response) {
         reset_form();
         setLoading(false);
+        window.location.href = "/";
       }
     } catch (error) {
       reset_form();
       setLoading(false);
+      window.location.href = "/";
     }
   }
 

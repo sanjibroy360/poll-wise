@@ -8,7 +8,7 @@ module SessionsHelper
   end
 
   def logged_in?
-    !@current_user.nil?
+    !current_user.nil?
   end
 
   def log_out
@@ -17,7 +17,7 @@ module SessionsHelper
 
   def authenticate_user
     unless logged_in?
-      flash[:danger] = "You need to log in first"
+      flash[:danger] = "You need to log in first."
       redirect_to login_url
     end
   end

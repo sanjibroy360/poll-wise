@@ -1,3 +1,25 @@
 // Place all the styles related to the Polls controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.poll {
+  width: 60% !important;
+  background: #fff;
+  border: 1px solid#ddd;
+  border-top: 0.25rem solid orange;
+  border-radius: 0.35rem;
+  padding: 0 1.5rem;
+  margin: 3rem auto;
+}
+
+.poll_title {
+  font-size: 1.875rem !important;
+}
+
+.option_name {
+  font-size: 1rem;
+}
+
+.vote-btn {
+  margin: 0.75rem 0;
+}

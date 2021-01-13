@@ -3,6 +3,7 @@ class PollsController < ApplicationController
 
   def index
     @polls = Poll.all
+    @current_user = current_user
   end
 
   def new

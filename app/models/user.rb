@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
+  has_many :ballots, dependent: :destroy
   before_save { email.downcase! }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :name, :password, presence: true, length: { maximum: 50 }

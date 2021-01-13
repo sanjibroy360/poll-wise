@@ -11,7 +11,7 @@ body {
 
 .container {
   max-width: 1280px;
-  margin: 0 auto;
+  margin: 0 auto !important;
 }
 
 h2 {
@@ -48,4 +48,10 @@ button:disabled {
       color: rgb(133, 100, 4);
     }
   }
+}
+
+
+
+.progress {
+    height: 0.35rem !important;
 }

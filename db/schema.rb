@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_11_171133) do
+ActiveRecord::Schema.define(version: 2021_01_12_130625) do
+
+  create_table "ballots", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "poll_id", null: false
+    t.integer "option_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["poll_id"], name: "index_ballots_on_poll_id"
+    t.index ["user_id"], name: "index_ballots_on_user_id"
+  end
 
   create_table "options", force: :cascade do |t|
     t.string "name"
@@ -37,5 +47,7 @@ ActiveRecord::Schema.define(version: 2021_01_11_171133) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "ballots", "polls"
+  add_foreign_key "ballots", "users"
   add_foreign_key "options", "polls"
 end

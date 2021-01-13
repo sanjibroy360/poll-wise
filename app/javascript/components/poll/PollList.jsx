@@ -1,32 +1,20 @@
 import React from "react";
+import SinglePoll from "./SinglePoll";
+import PollResult from "./PollResult";
 
-export default function PollList({polls}) {
-    console.log(polls, typeof polls)
+export default function PollList({ polls }) {
+    
   return (
-    <div>
+    <div className='container'>
       {polls?.map((poll) => {
         return (
-          <div>
-            <h3>{poll.title}</h3>
-
-            {poll.options.map((option) => {
-              return (
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="exampleRadios"
-                    id="exampleRadios1"
-                    value="option1"
-                    checked
-                  />
-                  <label class="form-check-label" for="exampleRadios1">
-                    {option.name}
-                  </label>
-                </div>
-              );
-            })}
-          </div>
+          <React.Fragment key={poll.id}>
+            {poll.voters.includes(poll.current_user?.id) ? (
+              <PollResult poll={poll} />
+            ) : (
+              <SinglePoll poll={poll} key={poll.id} />
+            )}
+          </React.Fragment>
         );
       })}
     </div>
